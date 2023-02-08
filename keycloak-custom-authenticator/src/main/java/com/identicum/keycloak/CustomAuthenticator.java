@@ -37,12 +37,13 @@ public class CustomAuthenticator extends UsernamePasswordForm {
 				.limit(targetStringLength)
 				.collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
 				.toString();
+
 		logger.infov("TOKEN!!!: {0}", token); //Que aparezca en los logs de Keycloak container
+        
         LoginFormsProvider form = context.form();
         form.setAttribute(generatedString, true);
 
         if (context.getUser() != null) {
-            LoginFormsProvider form = context.form();
             form.setAttribute(LoginFormsProvider.USERNAME_HIDDEN, true);
             form.setAttribute(LoginFormsProvider.REGISTRATION_DISABLED, true);
             context.getAuthenticationSession().setAuthNote(USER_SET_BEFORE_USERNAME_PASSWORD_AUTH, "true");

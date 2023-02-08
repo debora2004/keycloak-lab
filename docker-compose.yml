@@ -12,8 +12,8 @@ services:
       ports:
         - 8080:8080
       volumes:
-        - ./keycloak-custom-authenticator/target/keycloak-lab-authenticator-1.0-SNAPSHOT.jar:/opt/jboss/keycloak/standalone/deployments/keycloak-lab-authenticator-1.0-SNAPSHOT.jar
-        - ./keycloak-rest-repo/target/keycloak-lab-repo-1.0.0-SNAPSHOT.jar:/opt/jboss/keycloak/standalone/deployments/keycloak-lab-repo-1.0.0-SNAPSHOT.jar
+        # - ./keycloak-custom-authenticator/target/keycloak-lab-authenticator-1.0-SNAPSHOT.jar:/opt/jboss/keycloak/standalone/deployments/keycloak-lab-authenticator-1.0-SNAPSHOT.jar
+         - ./keycloak-rest-repo/target/keycloak-lab-repo-1.0.0-SNAPSHOT.jar:/opt/jboss/keycloak/standalone/deployments/keycloak-lab-repo-1.0.0-SNAPSHOT.jar
   mmock:
     container_name: mmock
     image: jordimartin/mmock
