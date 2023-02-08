@@ -44,19 +44,20 @@ public class KeycloakRestRepoProvider implements CredentialInputValidator,
 	@Override
 	public UserModel getUserByEmail(String email, RealmModel realm) {
 		logger.infov("Getting user: {0} by email", email);
-		return null;
+		return getUser(email,realm);
+
 	}
 
 	@Override
 	public UserModel getUserById(String id, RealmModel realm) {
 		logger.infov("Getting user by id: {0}", id);
-		return null;
+		return getUser(id,realm);
 	}
 
 	@Override
 	public UserModel getUserByUsername(String username, RealmModel realm) {
 		logger.infov("Getting user: {0} by username", username);
-		return null;
+		return getUser(username,realm);
 	}
 
 	public UserModel getUser(String query, RealmModel realm) {

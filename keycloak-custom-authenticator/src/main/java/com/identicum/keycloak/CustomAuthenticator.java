@@ -2,6 +2,8 @@ package com.identicum.keycloak;
 import org.jboss.logging.Logger;
 import org.jboss.resteasy.specimpl.MultivaluedMapImpl;
 
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.Random;
 
 import javax.ws.rs.core.MultivaluedMap;
@@ -26,9 +28,18 @@ public class CustomAuthenticator extends UsernamePasswordForm {
         String loginHint = context.getAuthenticationSession().getClientNote(OIDCLoginProtocol.LOGIN_HINT_PARAM);
         String rememberMeUsername = AuthenticationManager.getRememberMeUsername(context.getRealm(), context.getHttpRequest().getHttpHeaders());
 		
+        int leftLimit = 48; // numeral '0'
+		int rightLimit = 122; // letter 'z'
+		int targetStringLength = 10;
 		Random token =  new Random();
+        String generatedString = token.ints(leftLimit, rightLimit + 1)
+				.filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97))
+				.limit(targetStringLength)
+				.collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+				.toString();
 		logger.infov("TOKEN!!!: {0}", token); //Que aparezca en los logs de Keycloak container
-	
+        LoginFormsProvider form = context.form();
+        form.setAttribute(generatedString, true);
 
         if (context.getUser() != null) {
             LoginFormsProvider form = context.form();
