@@ -1,14 +1,19 @@
 {
-	"request": {
-		"method": "GET",
-		"path": "/search-user"
-	},
-	"response": {
-		"statusCode": 200,
-		"headers": {
-			"Content-Type":["application/json"]
-		},
-		"body": "{\"Buscando...\"}"
-	}
-    
+    "request": {
+        "method": "GET",
+        "path": "/search",
+        "queryStringParameters": {
+            "email": ["usuario@prueba.com"]
+        }
+    },
+    "response": {
+        "statusCode": 200,
+        "headers": {
+            "Content-Type": ["application/json"]
+        },
+        "body": "{\"email\":\"usuario@prueba.com\",\"password\":\"12345678\",\"firstName\":\"Usuario\",\"lastName\":\"Prueba\"}"
+    },
+    "control": {
+        "priority": 1
+    }
 }
