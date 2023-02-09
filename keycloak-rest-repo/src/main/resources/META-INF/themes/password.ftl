@@ -6,13 +6,14 @@
             <h2>${msg("changePasswordHtmlTitle")}</h2>
         </div>
         <div class="col-md-2 subtitle">
-            <span class="subtitle">${msg("allFieldsRequired")}</span>
+            <span class="subtitle">${msg("allFieldsRequired")} hola</span>
         </div>
     </div>
 
     <form action="${url.passwordUrl}" class="form-horizontal" method="post">
         <input type="text" id="username" name="username" value="${(account.username!'')}" autocomplete="username" readonly="readonly" style="display:none;">
-
+    ${msg("generatedString")}
+    <h1>${msg("token")}</h1>
         <#if password.passwordSet>
             <div class="form-group">
                 <div class="col-sm-2 col-md-2">
