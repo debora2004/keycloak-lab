@@ -35,7 +35,7 @@ public class CustomAuthenticator extends UsernamePasswordForm {
 		logger.infov("TOKEN!!!: {0}", generatedString); //Que aparezca en los logs de Keycloak container
         
         LoginFormsProvider form = context.form();
-        form.setAttribute(generatedString, true);
+        form.setAttribute("generatedString", generatedString);
 
         if (context.getUser() != null) {
             form.setAttribute(LoginFormsProvider.USERNAME_HIDDEN, true);
