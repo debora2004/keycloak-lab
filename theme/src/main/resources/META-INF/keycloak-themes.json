@@ -1,0 +1,8 @@
+{
+  "themes": [
+    {
+      "name" : "corp",
+      "types": [ "login", "account", "email"]
+    }
+  ]
+}

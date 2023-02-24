@@ -82,6 +82,7 @@ public class KeycloakRestRepoProvider implements CredentialInputValidator,
 	 */
 	@Override
 	public boolean isValid(RealmModel realm, UserModel user, CredentialInput input) {
+		logger.info("validating credentials");
 		return false;
 	}
 
@@ -95,6 +96,7 @@ public class KeycloakRestRepoProvider implements CredentialInputValidator,
 
 	@Override
 	public UserModel addUser(RealmModel realmModel, String username) {
+		logger.info("Creating User");
 		JsonObject user = restHandler.createUser(username);
 		RestUserAdapter adapter = new RestUserAdapter(session, realmModel, model, user);
 		adapter.setHandler(restHandler);

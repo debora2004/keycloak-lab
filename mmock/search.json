@@ -3,7 +3,7 @@
         "method": "GET",
         "path": "/search",
         "queryStringParameters": {
-            "email": ["usuario@prueba.com"]
+            "username": ["abi"]
         }
     },
     "response": {
@@ -11,7 +11,7 @@
         "headers": {
             "Content-Type": ["application/json"]
         },
-        "body": "{\"email\":\"usuario@prueba.com\",\"password\":\"12345678\",\"firstName\":\"Usuario\",\"lastName\":\"Prueba\"}"
+        "body": "{\"email\":\"abi@gmail.com\",\"username\":\"abi\",\"password\":\"12345678\",\"firstName\":\"Usuario\",\"lastName\":\"Prueba\"}"
     },
     "control": {
         "priority": 1

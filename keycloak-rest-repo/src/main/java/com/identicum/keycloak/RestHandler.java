@@ -56,14 +56,17 @@ public class RestHandler {
 
 	public JsonObject findUserByUsername(String username) {
 		logger.infov("Finding user by username: {0}", username);
-		SimpleHttpResponse response = null;
+
+		HttpGet httpget = new HttpGet(configuration.getBaseUrl() + "/search?username="+username);
+
+		SimpleHttpResponse response = executeCall(httpget);
 		return response.isSuccess()? response.getResponseAsJsonObject() : null;
 	}
 
 	public JsonObject createUser(String username) {
 		logger.infov("Creating user {0}", username);
 
-		HttpPost httpPost = new HttpPost(configuration.getBaseUrl() + "/users");
+		HttpPost httpPost = new HttpPost(configuration.getBaseUrl() + "/create");
 		httpPost.setHeader(CONTENT_TYPE, APPLICATION_JSON.getMimeType());
 
 		JsonObjectBuilder builder = createObjectBuilder();
@@ -103,13 +106,13 @@ public class RestHandler {
 	 * @throws RuntimeException if status code received is not 200
 	 */
 	private SimpleHttpResponse executeCall(HttpRequestBase request) {
-		logger.debugv("Executing Http Request [{0}] on [{1}]", request.getMethod(), request.getURI());
+		logger.infov("Executing Http Request [{0}] on [{1}]", request.getMethod(), request.getURI());
 		CloseableHttpResponse response = null;
 		try {
 			response = httpClient.execute(request);
 			String responseString = EntityUtils.toString(response.getEntity(), "UTF-8");
-			logger.debugv("Response code obtained from server: {0}", response.getStatusLine().getStatusCode());
-			logger.debugv("Response body obtained from server: {0}", responseString);
+			logger.infov("Response code obtained from server: {0}", response.getStatusLine().getStatusCode());
+			logger.infov("Response body obtained from server: {0}", responseString);
 			return new SimpleHttpResponse(response.getStatusLine().getStatusCode(), responseString);
 		}
 		catch(IOException io) {
