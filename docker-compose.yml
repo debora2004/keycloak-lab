@@ -13,8 +13,17 @@ services:
         - 8080:8080
       volumes:
         - ./keycloak-custom-authenticator/target/keycloak-lab-authenticator-1.0-SNAPSHOT.jar:/opt/jboss/keycloak/standalone/deployments/keycloak-lab-authenticator-1.0-SNAPSHOT.jar
+        - ./password-policy-notemail/target/policy-not-email-1.0-SNAPSHOT.jar:/opt/jboss/keycloak/standalone/deployments/policy-not-email-1.0-SNAPSHOT.jar
         - ./keycloak-rest-repo/target/keycloak-lab-repo-1.0.0-SNAPSHOT.jar:/opt/jboss/keycloak/standalone/deployments/keycloak-lab-repo-1.0.0-SNAPSHOT.jar
         - ./themes/mythemes/login/:/opt/jboss/keycloak/themes/mythemes/login
+
+  mailcatcher:
+        container_name: mailcatcher
+        image: schickling/mailcatcher:latest
+        restart: always
+        ports:
+            - 1025:1025
+            - 1080:1080
   mmock:
     container_name: mmock
     image: jordimartin/mmock
