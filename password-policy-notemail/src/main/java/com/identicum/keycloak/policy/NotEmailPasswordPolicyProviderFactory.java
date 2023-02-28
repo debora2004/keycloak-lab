@@ -16,7 +16,6 @@
  */
 
  package com.identicum.keycloak.policy;
-
  import org.keycloak.Config;
  import org.keycloak.models.KeycloakSession;
  import org.keycloak.models.KeycloakSessionFactory;

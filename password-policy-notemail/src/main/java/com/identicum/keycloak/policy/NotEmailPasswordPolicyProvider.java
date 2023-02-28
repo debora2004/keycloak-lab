@@ -20,8 +20,8 @@
  import static org.jboss.logging.Logger.getLogger;
 
 import org.keycloak.models.KeycloakContext;
- import org.keycloak.models.RealmModel;
- import org.keycloak.models.UserModel;
+import org.keycloak.models.RealmModel;
+import org.keycloak.models.UserModel;
 import org.keycloak.policy.PasswordPolicyProvider;
 import org.keycloak.policy.PolicyError;
  
