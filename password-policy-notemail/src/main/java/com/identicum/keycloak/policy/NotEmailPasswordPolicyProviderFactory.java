@@ -28,7 +28,7 @@ import org.keycloak.policy.PasswordPolicyProviderFactory;
   */
  public class NotEmailPasswordPolicyProviderFactory implements PasswordPolicyProviderFactory {
  
-     public static final String ID = "notEmail";
+     public static final String ID = "notEmail2";
  
      @Override
      public String getId() {
