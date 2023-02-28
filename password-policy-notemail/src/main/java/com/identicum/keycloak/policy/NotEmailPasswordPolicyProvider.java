@@ -47,9 +47,8 @@ import org.keycloak.policy.PolicyError;
          if (email == null) {
              return null;
          }
-         logger.infov("email!!!: {0}", email); //Que aparezca en los logs de Keycloak container
-
-         return email.toLowerCase().equals(password) ? POLICY_ERROR : null;
+         
+         return email.equalsIgnoreCase(password) ? POLICY_ERROR : null;
      }
  
      @Override
